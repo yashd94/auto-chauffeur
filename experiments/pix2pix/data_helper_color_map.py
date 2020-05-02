@@ -1,5 +1,4 @@
 import os
-import random
 from PIL import Image
 
 import numpy as np
@@ -9,11 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision
-import torchvision.transforms.functional as TF
 
 from helper import convert_map_to_lane_map, convert_map_to_road_map
-
-random.seed(0)
 
 NUM_SAMPLE_PER_SCENE = 126
 NUM_IMAGE_PER_SAMPLE = 6
@@ -115,6 +111,7 @@ class LabeledDataset(torch.utils.data.Dataset):
             image_path = os.path.join(sample_path, image_name)
             image = Image.open(image_path)
             images.append(self.img_transform(image))
+        image_tensor = torch.cat(images)
 
         data_entries = self.annotation_dataframe[(self.annotation_dataframe['scene'] == scene_id) & (self.annotation_dataframe['sample'] == sample_id)]
         corners = data_entries[['fl_x', 'fr_x', 'bl_x', 'br_x', 'fl_y', 'fr_y','bl_y', 'br_y']].to_numpy()
@@ -122,15 +119,7 @@ class LabeledDataset(torch.utils.data.Dataset):
         
         ego_path = os.path.join(sample_path, 'ego.png')
         ego_image = Image.open(ego_path)
-
-        random_rotate = random.randint(0, 1)
-        if random_rotate:
-            images.reverse()
-            ego_image = TF.rotate(ego_image, 180)
-
-        image_tensor = torch.cat(images)
-
-        # ego_image = torchvision.transforms.functional.to_tensor(ego_image)
+        ego_image = torchvision.transforms.functional.to_tensor(ego_image)
         # road_image = convert_map_to_road_map(ego_image)
         ego_image = self.map_transform(ego_image)
         
@@ -147,12 +136,10 @@ class LabeledDataset(torch.utils.data.Dataset):
             extra['action'] = torch.as_tensor(actions)
             extra['ego_image'] = ego_image
             extra['lane_image'] = lane_image
-            # print(sample_path)
-            # print(type(image_tensor), type(target), type(ego_image), type(extra))
+
             return image_tensor, target, ego_image, extra
         
         else:
-            # print(type(image_tensor), type(target), type(ego_image))
             return image_tensor, target, ego_image
 
     
