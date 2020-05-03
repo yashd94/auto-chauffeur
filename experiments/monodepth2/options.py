@@ -9,7 +9,7 @@ from __future__ import absolute_import, division, print_function
 import os
 import argparse
 
-file_dir = os.path.dirname(__file__)  # the directory that options.py resides in
+file_dir = '/home/alexander' # the directory that options.py resides in
 
 
 class MonodepthOptions:
@@ -87,7 +87,7 @@ class MonodepthOptions:
         self.parser.add_argument("--batch_size",
                                  type=int,
                                  help="batch size",
-                                 default=12)
+                                 default=36)
         self.parser.add_argument("--learning_rate",
                                  type=float,
                                  help="learning rate",
@@ -140,7 +140,7 @@ class MonodepthOptions:
         self.parser.add_argument("--num_workers",
                                  type=int,
                                  help="number of dataloader workers",
-                                 default=12)
+                                 default=2)
 
         # LOADING options
         self.parser.add_argument("--load_weights_folder",
@@ -156,7 +156,7 @@ class MonodepthOptions:
         self.parser.add_argument("--log_frequency",
                                  type=int,
                                  help="number of batches between each tensorboard log",
-                                 default=250)
+                                 default=25)
         self.parser.add_argument("--save_frequency",
                                  type=int,
                                  help="number of epochs between each save",
