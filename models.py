@@ -86,3 +86,41 @@ class Generator(nn.Module):
         
     def forward(self, x):
         return self.model(x)
+    
+   class Discriminator(nn.Module):
+    def __init__(self, in_ch, ndf=64, n_layers=3):  
+        super(Discriminator, self).__init__()
+        
+        self.block1 = nn.Sequential(nn.Conv2d(in_ch, ndf, kernel_size=4, stride=2, padding=1),
+                                    nn.LeakyReLU(0.2, True)
+                                   )
+        
+        nf_mult = 1
+        nf_mult_prev = 1
+        sequence2 = []        
+        for n in range(1, n_layers):  # gradually increase the number of filters
+            nf_mult_prev = nf_mult
+            nf_mult = min(2 ** n, 8)
+            sequence2 += [nn.Conv2d(ndf * nf_mult_prev, ndf * nf_mult, kernel_size=4, stride=2, padding=1),
+                         nn.BatchNorm2d(ndf * nf_mult),
+                         nn.LeakyReLU(0.2, True)
+                         ]
+        self.block2 = nn.Sequential(*sequence2)
+        
+        sequence3 = []
+        nf_mult_prev = nf_mult
+        nf_mult = min(2 ** n_layers, 8)
+        sequence3 += [nn.Conv2d(ndf * nf_mult_prev, ndf * nf_mult, kernel_size=4, stride=1, padding=1),
+                     nn.BatchNorm2d(ndf * nf_mult),
+                     nn.LeakyReLU(0.2, True)
+                     ]
+        self.block3 = nn.Sequential(*sequence3)
+        
+        self.model = nn.Sequential(self.block1,
+                                   self.block2,
+                                   self.block3,
+                                   nn.Conv2d(ndf * nf_mult, 1, kernel_size=4, stride=1, padding=1)
+                                  )
+        
+    def forward(self, x):
+        return self.model(x)
