@@ -1,22 +1,14 @@
+# Written by Team Crazy Glitch Asians, NYU Deep Learning Spring 2020
+
+
 from __future__ import absolute_import, division, print_function
 
 import torch
 import torch.nn as nn
 
 class ResnetBlock(nn.Module):
-    """
-    Define a Resnet block
-    A resnet block is a conv block with skip connections
-    Original Resnet paper: https://arxiv.org/pdf/1512.03385.pdf
-    """
+
     def __init__(self, dim):
-        """
-        Parameters:
-            dim (int)           -- the number of channels in the conv layer.
-            padding_type (str)  -- the name of padding layer: reflect | replicate | zero
-            use_dropout (bool)  -- if use dropout layers.
-            use_bias (bool)     -- if the conv layer uses bias or not
-        """
         super(ResnetBlock, self).__init__()
         self.resnet_block = nn.Sequential(nn.Conv2d(dim, dim, kernel_size=3, padding=1),
                                           nn.BatchNorm2d(dim),
@@ -35,14 +27,7 @@ class Generator(nn.Module):
     RESNET-based generator that consists of Resnet blocks + downsampling/upsampling operations.
     """
     def __init__(self, in_ch, out_ch, ngf, n_blocks=6, init_gain=0.02):
-        """
-        Parameters:
-            in_ch (int)         -- the number of channels in input images
-            out_ch (int)        -- the number of channels in output images
-            ngf (int)           -- the number of filters in the last conv layer
-            n_blocks (int)      -- the number of ResNet blocks
-            padding_type (str)  -- the name of padding layer in conv layers: reflect | replicate | zero
-        """        
+   
         assert(n_blocks >= 0)
         super(Generator, self).__init__()
         
@@ -87,7 +72,7 @@ class Generator(nn.Module):
     def forward(self, x):
         return self.model(x)
     
-   class Discriminator(nn.Module):
+class Discriminator(nn.Module):
     def __init__(self, in_ch, ndf=64, n_layers=3):  
         super(Discriminator, self).__init__()
         
