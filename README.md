@@ -1,21 +1,20 @@
-# Repository for NYU Deep Learning Spring 2020 Self-Supervised Learning Competition.
-
+# NYU Deep Learning Spring 2020 Self-Supervised Learning Competition.
 Wherever applicable, we have explicitly attributed credit at the head of any source code files in this repository.
 
 ## Directories
-#### 00 Utility Scripts
+### 00 Utility Scripts
 These are scripts written by our team to help auotmate tasks, e.g. reorganizing the dataset to serve a specific training task.
 
-#### 01 Camera Matrix Info
+### 01 Camera Matrix Info
 Provided information about the camera intrinsic and extrinsic matrices, used in the 'Geometric Scene Reconstruction' portion of our experiments.
 
-#### 02 Notebooks
+### 02 Notebooks
 These are pre-run notebooks that we naturally generated over the course of working on the project.  In these notebooks, you will find organized, sequential workflows for experiments that we conducted, including source code, pre-rendered graphs, plots and graphics.
 
-#### 03 Experiments
+### 03 Experiments
 Source code for model training for experiments that we performed.  The experiments that we included have survived a pruning process (we did not include any experiments that were only partially implemented or that we did not put in substantial effort to train.)
 
-#### 04 Competition Scripts
+### 04 Competition Scripts
 Scripts specific to the competition submission for the DS-GA 1008 competition.
 
 ## Other Scripts In This Repository
