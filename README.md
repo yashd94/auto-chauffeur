@@ -9,10 +9,10 @@ These are scripts written by our team to help auotmate tasks, e.g. reorganizing 
 Provided information about the camera intrinsic and extrinsic matrices, used in the 'Geometric Scene Reconstruction' portion of our experiments.
 
 ### 02 Notebooks
-These are pre-run notebooks that we naturally generated over the course of working on the project.  In these notebooks, you will find organized, sequential workflows for experiments that we conducted, including source code, pre-rendered graphs, plots and graphics.
+These are organized notebooks from the course of working on the project.  They are pre-run, which should make them clear and easy to digest and get insight into our working process.  In these notebooks, you will find organized, sequential workflows for experiments that we conducted, including source code, pre-rendered graphs, plots and graphics.
 
 ### 03 Experiments
-Source code for model training for experiments that we performed.  The experiments that we included have survived a pruning process (we did not include any experiments that were only partially implemented or that we did not put in substantial effort to train.)
+Source code for model training for experiments that we performed.  The experiments that we included have survived a pruning process (we did not include any experiments that were only partially implemented or that we did not invest substantial effort to train.)
 
 ### 04 Competition Scripts
 Scripts specific to the competition submission for the DS-GA 1008 competition.
