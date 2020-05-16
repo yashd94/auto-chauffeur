@@ -1,5 +1,9 @@
 # NYU Deep Learning Spring 2020 Final Project
-**Techniques and ideas explored in this project:** Conditional Generative Adversarial Network, Pretext-Invariant Representation Learning, Self-Supervised Monocular Depth Prediction, Geometric Scene Reconstruction.
+**Techniques and ideas explored in this project:**
+- Conditional Generative Adversarial Network
+- Pretext-Invariant Representation Learning
+- Self-Supervised Monocular Depth Prediction
+- Geometric Scene Reconstruction.
 
 [Accompanying Paper](https://github.com/yashd94/auto-chauffeur/blob/master/ProjectSummary.pdf "Accompanying Paper")
 
