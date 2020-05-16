@@ -1,7 +1,7 @@
 # NYU Deep Learning Spring 2020 Final Project
 Wherever applicable, we have explicitly attributed credit at the head of any source code files in this repository.
 
-(https://github.com/yashd94/auto-chauffeur/blob/master/ProjectSummary.pdf "Accompanying Paper")
+[Accompanying Paper](https://github.com/yashd94/auto-chauffeur/blob/master/ProjectSummary.pdf "Accompanying Paper")
 
 ## Directories
 ### 00 Utility Scripts
